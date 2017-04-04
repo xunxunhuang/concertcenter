@@ -1,0 +1,71 @@
+﻿@model GigHub.ViewModels.GigDetailsViewModel
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>
+    <a href="@Url.Action("FolloweeDetail", "Followees", new { name = Model.Gig.Artist.Name })">
+        @Model.Gig.Artist.Name
+    </a>
+   
+    @if (User.Identity.IsAuthenticated)
+    {
+        if (Model.IsFollowing)
+        {
+            <button class="btn btn-info js-toggle-follow" data-user-id="@Model.Gig.ArtistId">Following</button>
+        }
+        else
+        {
+            <button class="btn btn-default js-toggle-follow" data-user-id="@Model.Gig.ArtistId">Follow</button>
+        }
+    }
+</h2>
+<p>
+    Performing at @Model.Gig.Venue on @Model.Gig.DateTime.ToString("d MMM") at @Model.Gig.DateTime.ToString("HH:mm")
+</p>
+
+@if (User.Identity.IsAuthenticated && Model.IsAttending)
+{
+    <p>You are going to this event. </p>
+}
+<hr />
+@if (Model.content != null) { 
+    foreach (var gig in Model.content)
+    {
+        if ((gig !="") &&(gig!=" "))
+        { 
+        <div class="box6">
+            <p>
+                @gig
+            </p>
+
+        </div>
+        }
+    }
+}
+@using (Html.BeginForm("Comments", "Gigs"))
+{
+    <div class="form-group">
+        <div id="addComments" class="input-group">
+            @Html.HiddenFor(m => m.Gig.comments)
+            @Html.HiddenFor(m => m.Gig.Id)
+            @Html.TextBoxFor(m => m.temp, new { @class = "form-control", placeholder = "please add your comment here" })
+            <span class="input-group-addon">
+                <button class="glyphicon glyphicon-comment"></button>
+            </span>
+        </div>
+    </div>
+}
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            GigDetailsController.init();
+        });
+    </script>
+}
+
+
+
+

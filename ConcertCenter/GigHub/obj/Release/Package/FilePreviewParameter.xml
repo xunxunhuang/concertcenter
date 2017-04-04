@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="concertcenter" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^\\\\vmware-host\\Shared\ Folders\\文稿\\Visual\ Studio\ 2013\\Projects\\After2\\GigHub\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^\\\\vmware-host\\Shared\ Folders\\文稿\\Visual\ Studio\ 2013\\Projects\\After2\\GigHub\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=tcp:iufcs8t2e5.database.windows.net,1433;Initial Catalog=concertAAR0vWxVd;User Id=gighub@iufcs8t2e5;Password=Hsx5527612" tags="">
+    <parameterEntry kind="XmlFile" scope="\\\\vmware-host\\Shared\ Folders\\文稿\\Visual\ Studio\ 2013\\Projects\\After2\\GigHub\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+</parameters>
